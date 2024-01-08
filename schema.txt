@@ -1,0 +1,53 @@
+CREATE TABLE `tbl_fees` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `reg_no` int NOT NULL,
+  `receipt_no` int NOT NULL,
+  `class_name` varchar(200) DEFAULT NULL,
+  `amount` int NOT NULL,
+  `dt_deposit` timestamp NULL DEFAULT NULL,
+  `bank` varchar(200) DEFAULT NULL,
+  `fee_reason` varchar(500) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+)
+
+
+CREATE TABLE `tbl_login_user` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `email` varchar(100) DEFAULT NULL,
+  `pass_word` varchar(100) DEFAULT NULL,
+  `token` varchar(500) DEFAULT NULL,
+  `user_status` text,
+  `dt_time` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`,`email`)
+)
+
+
+CREATE TABLE `tbl_marks` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `reg_no` int NOT NULL,
+  `exam_name` varchar(200) DEFAULT NULL,
+  `language` int NOT NULL,
+  `english` int NOT NULL,
+  `maths` int NOT NULL,
+  `science` int NOT NULL,
+  `remarks` text,
+  `email` varchar(100) DEFAULT NULL,
+  `dt_time` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) 
+
+
+CREATE TABLE `tbl_student_details` (
+  `reg_no` int NOT NULL AUTO_INCREMENT,
+  `student_fullname` text,
+  `gender` varchar(10) DEFAULT NULL,
+  `dob` date DEFAULT NULL,
+  `age` int DEFAULT NULL,
+  `phone_no` bigint DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `class_name` int DEFAULT NULL,
+  `date_join` date DEFAULT NULL,
+  `full_address` varchar(500) DEFAULT NULL,
+  PRIMARY KEY (`reg_no`)
+) 

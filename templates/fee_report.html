@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container-fluid px-4">
+    <center>
+        {% for message in get_flashed_messages() %} 
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+    </center>
+    <div class="bg-secondary text-center rounded p-4">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h6 class="mb-0">List of Marks of Students</h6>
+                   </div>
+<div class="table-responsive">
+    <table class="table text-start align-middle table-bordered table-hover mb-0">
+        <thead>
+            <tr class="text-white">
+                
+                <th scope="col">Reg No</th>
+                <th scope="col">Receipt No</th>
+                <th scope="col">Class Name</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Date of deposit</th>
+                <th scope="col">Bank</th>
+                <th scope="col">Fee Reason</th>
+               
+                
+            
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in payload %}
+            <tr><td>{{ item.reg_no }}</td>
+                <td>{{ item.receipt_no }}</td>
+                <td>{{ item.class_name }}</td>
+                <td>{{ item.amount }}</td>
+                <td>{{ item.dt_deposit }}</td>
+                <td>{{ item.bank }}</td>
+                <td>{{ item.fee_reason }}</td>
+             
+            </tr>
+            
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+  </div>
+</div>
+{% endblock %}

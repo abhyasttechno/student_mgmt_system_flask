@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container-fluid px-4">
+    <center>
+        {% for message in get_flashed_messages() %} 
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+    </center>
+    <div class="bg-secondary text-center rounded p-4">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h6 class="mb-0">List of Marks of Students</h6>
+                   </div>
+<div class="table-responsive">
+    <table class="table text-start align-middle table-bordered table-hover mb-0">
+        <thead>
+            <tr class="text-white">
+                
+                <th scope="col">Reg No</th>
+                <th scope="col">Receipt No</th>
+                <th scope="col">Class Name</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Date of deposit</th>
+                <th scope="col">Bank</th>
+                <th scope="col">Fee Reason</th>
+               
+                
+                <th scope="col">Edit</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in payload %}
+            <tr><td>{{ item.reg_no }}</td>
+                <td>{{ item.receipt_no }}</td>
+                <td>{{ item.class_name }}</td>
+                <td>{{ item.amount }}</td>
+                <td>{{ item.dt_deposit }}</td>
+                <td>{{ item.bank }}</td>
+                <td>{{ item.fee_reason }}</td>
+                <td><a href="#" class="btn btn-sm btn-primary" data-toggle="modal"
+                    data-target="#update{{ item.reg_no }}">Edit</a></td>
+
+                    <td>
+                        <form action="{{ url_for('delete_fees') }}" method="POST">
+                            <input type="hidden" name="regNumber" value="{{ item.reg_no }}">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
+            </tr>
+            <div id="update{{ item.reg_no }}" class="modal fade" role="dialog">
+                <div class="modal-dialog modal-lg">
+        
+        
+                    <div class="modal-content container">
+        
+        
+                        <div class="modal-header">
+        
+        
+                            <h2>Edit Student Fees</h2>
+        
+        
+                            <br><br>
+                        </div>
+        
+        
+                        <div class="modal-body back">
+        
+                            <form action="{{url_for('edit_stud_fees')}}" method="POST" enctype="multipart/form-data">
+                                <div class="grid-container">
+                                <div class="form-group">
+                                    <label for="regNumber"> Registration Number </label>
+                                    <input type="text" class="form-control" id="regNumber" name="regNumber" placeholder="Enter registration number" value="{{ item.reg_no }}" >
+                                   
+                                </div>
+                                <div class="form-group">
+                                    {{ form.receipt_no.label(class="form-label") }}
+                                    <input type="text" class="form-control"
+                                        name="receipt_no" id="receipt_no"
+                                        value="{{item.receipt_no}}" >
+                                </div>
+                                
+                                <div class="form-group">
+                                    {{ form.class_name.label(class="form-label") }}
+                                    <input type="number" class="form-control"
+                                        name="class_name"
+                                        value="{{item.class_name}}">
+                                </div>
+                                <div class="form-group">
+                                    {{ form.amount.label(class="form-label") }}
+                                    <input type="number" class="form-control"
+                                        name="amount"
+                                        value="{{item.amount}}">
+                                </div>
+
+                                <div class="form-group">
+                                    {{ form.dt_deposit.label(class="form-label") }}
+                                    <input type="date" class="form-control"
+                                        name="dt_deposit"
+                                        value="{{item.dt_deposit}}">
+                                </div>
+
+                                <div class="form-group">
+                                    {{ form.bank.label(class="form-label") }}
+                                    <input type="text" class="form-control"
+                                        name="bank"
+                                        value="{{item.bank}}">
+                                </div>
+
+                               
+
+                                <div class="form-group">
+                                    {{ form.fee_reason.label(class="form-label") }}
+
+                                    <input type="text" class="form-control"
+                                        name="fee_reason"
+                                        value="{{item.fee_reason}}">
+                               
+                                </div>
+
+                               
+                                
+                                <div class="form-group">
+                                    <button class="btn btn-primary"
+                                        type="submit">Update</button>
+                                </div>
+
+                                </div>
+                            </form>
+        
+                        </div>
+        
+        
+                        <div class="modal-footer">
+        
+        
+                            <center> <button type="button" class="btn btn-secondary"
+                                    data-dismiss="modal">Close</button>
+                            </center>
+        
+                        </div>
+        
+        
+                    </div>
+        
+        
+                </div>
+        
+            </div>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+  </div>
+</div>
+{% endblock %}

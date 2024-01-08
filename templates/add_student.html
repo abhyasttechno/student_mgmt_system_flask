@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>School Management System</title>
+     
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+        <!-- Bootstrap CSS-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/form.css')}}">
+        
+
+<script src="https://kit.fontawesome.com/a658a7b479.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+<style>
+
+.card {
+            padding: 30px 40px;
+            margin-top: 30px;
+            margin-bottom: 60px;
+            border: none !important;
+            box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(14px);
+            opacity: .85;
+            background-color: #989469;
+        }
+</style>
+
+</head>
+    <body>
+        <nav class="navbar navbar-expand-md navbar-dark bg-primary mb-4">
+			<a class="navbar-brand" href="#">SMS</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+			  <span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarCollapse">
+			  <ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+				  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item dropdown active">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Student
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <a class="dropdown-item" href="/add_student">Add Student</a>
+                      <a class="dropdown-item" href="/edit_student">Edit Student</a>
+                      
+                    </div>
+                  </li>
+                  <li class="nav-item ">
+                    <a class="nav-link" href="/add_marks">Marks </a>
+                  </li>
+				  <li class="nav-item">
+					<a class="nav-link" href="/fees">Fees</a>
+				  </li>
+				  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Reports
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <a class="dropdown-item" href="/student_report">Student Report</a>
+                      <a class="dropdown-item" href="/marks_report">Marks Report</a>
+					  <a class="dropdown-item" href="/fee_report">Fees Report</a>
+					 
+                      
+                    </div>
+                  </li>
+			  </ul>
+			  
+				
+			  <ul class="nav navbar-right">
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout"><font color="white"><i class="fa fa-sign-out" aria-hidden="true"></i></font></a>
+                </li>
+            </ul>
+			</div>
+		  </nav>
+	  
+          <div class="container-fluid px-1 py-2 mx-auto">
+            <div class="row d-flex justify-content-center">
+                <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title mb-4">
+                                <font color="white">Add Student</font>
+                            </h4>
+                            <form class="form-card" method="POST" action="/insert_student" enctype multipart form-data>
+                                
+                                <span class="login100-form-title p-b-45">
+                                    <center> 
+                                        <div >
+                                            <span class="err_msg">{{msg}}</span>
+                                        </div>
+                                    </center>
+                                </span>
+                                <div class="row justify-content-between text-left">
+                                    <div class="form-group col-sm-6 flex-column d-flex">
+                                        <label class="form-control-label px-3 color">
+                                            Reg No.<span class="text-danger">*</span>
+                                        </label>
+                                        <input class="form-control" type="number" disabled value="{{regno}}">
+                                        <input class="form-control" type="hidden" name="reg_no">
+                                    </div>
+                                    <div class="form-group col-sm-6 flex-column d-flex">
+                                        <label class="form-control-label px-3 color">
+                                            Full Name<span class="text-danger">*</span>
+                                        </label>
+                                        <input class="form-control" type="text" name="full_name" placeholder="Enter Full Name" required>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-between text-left">
+                                    <div class="form-group col-sm-6 flex-column d-flex">
+                                        <label class="form-control-label px-3 color">
+                                            Gender<span class="text-danger">*</span>
+                                        </label>
+                                        <select class="form-control" name="gender">
+                                            <option value="0">
+                                                Select Gender
+                                            </option>
+                                            <option value="Male">
+                                                Male
+                                            </option>
+                                            <option value="Female">
+                                               Female
+                                            </option>
+                                        </select>
+                                    </div>
+
+                                
+                                    <div class="form-group col-sm-6 flex-column d-flex">
+                                        <label class="form-control-label px-3 color">
+                                            Date of Birth<span class="text-danger">*</span>
+                                        </label>
+                                        <input class="form-control" type="date" name="dob" placeholder="Enter Date of Birth"
+                                            required>
+                                    </div>
+                                    </div>
+                                    <div class="row justify-content-between text-left">
+                                    <div class="form-group col-sm-6 flex-column d-flex">
+                                        <label class="form-control-label px-3 color">
+                                            Age<span class="text-danger">*</span>
+                                        </label>
+                                        <input class="form-control" type="number" name="age"
+                                            placeholder="Enter Age in years" required>
+                                    </div>
+                                
+                               
+                                    <div class="form-group col-sm-6 flex-column d-flex">
+                                        <label class="form-control-label px-3 color">
+                                            Phone<span class="text-danger">*</span>
+                                        </label>
+                                        <input class="form-control" type="number" name="phone"
+                                            placeholder="Enter 10 digit Phone number" required>
+                                    </div>
+                                    </div>
+                                    <div class="row justify-content-between text-left">
+                                    <div class="form-group col-sm-6 flex-column d-flex">
+                                        <label class="form-control-label px-3 color">
+                                            Email<span class="text-danger">*</span>
+                                        </label>
+                                        <input class="form-control" type="email" name="email"
+                                            placeholder="Enter Parent Email" required>
+                                    </div>
+                                
+                               
+                                    <div class="form-group col-sm-6 flex-column d-flex">
+                                        <label class="form-control-label px-3 color">
+                                            Class<span class="text-danger">*</span>
+                                        </label>
+                                        <input class="form-control" type="number" name="class"
+                                            placeholder="Enter Class" required>
+                                    </div>
+                                    </div>
+                                    
+                                
+                                
+                                <div class="row justify-content-between text-center mt-4 ">
+                                    <div class="form-group col-sm-6 flex-column d-flex mx-auto">
+                                        <label class="form-control-label px-3 color">
+                                            Full Address<span class="text-danger">*</span>
+                                        </label>
+                                        <textarea name="full_address" rows="3" cols="5"></textarea>
+                                    </div>
+                                </div>
+                             
+                                <div class="row justify-content-between text-center mt-4 ">
+                                    <div class="form-group col-sm-6 flex-column d-flex mx-auto">
+                                        
+                                        <button type="submit" class="btn-block btn-primary btn-lg">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <!-- JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>

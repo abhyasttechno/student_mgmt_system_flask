@@ -1,0 +1,27 @@
+@app.route('/')
+def login():
+    return render_template("login.html")
+
+@app.route('/register')
+def register():
+    return render_template("register.html")
+@app.route('/home')
+def home():
+    return render_template("home.html")
+
+@app.route('/add_student')
+def add_student():
+    return render_template("add_student.html")
+
+@app.route('/edit_student')
+def edit_student():
+    return render_template("edit_student.html")
+
+
+@app.route('/add_marks')
+def add_marks():
+    return render_template("add_marks.html")
+
+@app.route('/add_fees')
+def add_fees():
+    return render_template("add_fees.html")

@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container-fluid px-1 py-2 mx-auto">
+    <div class="row d-flex justify-content-center">
+        <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+            <div class="form-border">
+                <form class="form-card" method="POST" action="/insert_marks" enctype="multipart/form-data">
+                    {{ form.hidden_tag() }}
+                    
+                    <center>
+                        {% for message in get_flashed_messages() %} 
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        {% endfor %}
+                    </center>
+  
+                    <div class="form-header">
+                        <h4>Marks Entry Form</h4>
+                    </div>
+                    
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-6 flex-column d-flex">
+                            {{ form.reg_no.label(class="form-control-label px-3 color") }}
+                            {{ form.reg_no(class="form-control", required=True) }}
+                        </div>
+                        <div class="form-group col-sm-6 flex-column d-flex">
+                            {{ form.exam_name.label(class="form-control-label px-3 color") }}
+                            {{ form.exam_name(class="form-control", placeholder="Enter Exam", required=True) }}
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-6 flex-column d-flex">
+                            {{ form.language.label(class="form-control-label px-3 color") }}
+                            {{ form.language(class="form-control", placeholder="Enter Language Marks", required=True) }}
+                        </div>
+                        <div class="form-group col-sm-6 flex-column d-flex">
+                            {{ form.english.label(class="form-control-label px-3 color") }}
+                            {{ form.english(class="form-control", placeholder="Enter English Marks", required=True) }}
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-6 flex-column d-flex">
+                            {{ form.maths.label(class="form-control-label px-3 color") }}
+                            {{ form.maths(class="form-control", placeholder="Enter Maths Marks", required=True) }}
+                        </div>
+                        <div class="form-group col-sm-6 flex-column d-flex">
+                            {{ form.science.label(class="form-control-label px-3 color") }}
+                            {{ form.science(class="form-control", placeholder="Enter Science Marks", required=True) }}
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-between text-center mt-4">
+                        <div class="form-group col-sm-6 flex-column d-flex mx-auto">
+                            {{ form.remarks.label(class="form-control-label px-3 color") }}
+                            {{ form.remarks(class="form-control", rows=3, required=True) }}
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-between text-center mt-4">
+                        <div class="form-group col-sm-6 flex-column d-flex mx-auto">
+                            {{ form.submit(class="btn-block btn-primary btn-lg") }}
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

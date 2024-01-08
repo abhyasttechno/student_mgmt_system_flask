@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>School Management System</title>
+     
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+        <!-- Bootstrap CSS-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+        
+        
+
+<script src="https://kit.fontawesome.com/a658a7b479.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+		<nav class="navbar navbar-expand-md navbar-dark bg-primary mb-4">
+			<a class="navbar-brand" href="#">SMS</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+			  <span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarCollapse">
+			  <ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+				  <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Student
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <a class="dropdown-item" href="/add_student">Add Student</a>
+                      <a class="dropdown-item" href="/edit_student">Edit Student</a>
+                      
+                      
+                    </div>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Marks
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <a class="dropdown-item" href="/add_marks">Add Marks</a>
+                      <a class="dropdown-item" href="/edit_marks">Edit Marks</a>
+                      
+                    </div>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Fees
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <a class="dropdown-item" href="/add_fees">Add Fees</a>
+                      <a class="dropdown-item" href="/edit_fees">Edit Fees</a>
+                      
+                    </div>
+                  </li>
+				  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Reports
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <a class="dropdown-item" href="/student_report">Student Report</a>
+                      <a class="dropdown-item" href="/marks_report">Marks Report</a>
+					  <a class="dropdown-item" href="/fee_report">Fees Report</a>
+					 
+                      
+                    </div>
+                  </li>
+			  </ul>
+			  
+				
+			  <ul class="nav navbar-right">
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout"><font color="white"><i class="fa fa-sign-out" aria-hidden="true"></i></font></a>
+                </li>
+            </ul>
+			</div>
+		  </nav>
+      <center>
+        {% for message in get_flashed_messages() %} 
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+    </center>
+		  <main role="main" class="container">
+			<div class="jumbotron">
+			  <h1 >Welcome to School Management System (SMS)</h1>
+			  <p class="lead">A school management system software helps educational institutions streamline their administrative tasks and improve communication between staff, students, and parents.</p>
+			 
+			</div>
+		  </main>
+	  
+  <!-- Hero -->
+        
+        <!-- JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>

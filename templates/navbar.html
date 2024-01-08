@@ -1,0 +1,73 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-primary mb-4">
+    <a class="navbar-brand" href="#">SMS</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item dropdown active">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Student
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              {% if session.get('user_status') == 'Admin' %}
+              <a class="dropdown-item" href="/add_student">Add Student</a>
+              <a class="dropdown-item" href="/edit_student">Edit Student</a>
+          {% endif %}
+              
+            </div>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Marks
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              {% if session.get('user_status') == 'Teacher' %}
+              <a class="dropdown-item" href="/add_marks">Add Marks</a>
+              <a class="dropdown-item" href="/edit_marks">Edit Marks</a>
+              {% endif %}
+            </div>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Fees
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+
+              {% if session.get('user_status') == 'Admin' %}
+              <a class="dropdown-item" href="/add_fees">Add Fees</a>
+              <a class="dropdown-item" href="/edit_fees">Edit Fees</a>
+        {% endif %}
+              
+              
+            </div>
+          </li>
+          
+          
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Reports
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="/student_report">Student Report</a>
+              <a class="dropdown-item" href="/marks_report">Marks Report</a>
+              <a class="dropdown-item" href="/fee_report">Fees Report</a>
+             
+              
+            </div>
+          </li>
+      </ul>
+      
+        
+      <ul class="nav navbar-right">
+        <li class="nav-item">
+            <a class="nav-link" href="/logout"><font color="white"><i class="fa fa-sign-out" aria-hidden="true"></i></font></a>
+        </li>
+    </ul>
+    </div>
+  </nav>

@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container-fluid px-1 py-2 mx-auto">
+    <div class="row d-flex justify-content-center">
+        <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+            <div class="form-border">
+                <form method="POST" action="/insert_student" enctype="multipart/form-data">
+                    {{ form.hidden_tag() }}
+
+                    <center>
+                        {% for message in get_flashed_messages() %}
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ keyword }} {{ message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        {% endfor %}
+                    </center>
+
+                    <div class="form-header">
+                        <h4>Student Registration</h4>
+                    </div>
+
+                    <!-- Registration Number -->
+                    <div class="form-group">
+                        <label for="regNumber"><i class="fas fa-id-badge"></i> Registration Number:</label>
+                        <input type="text" class="form-control" id="regNumber" name="regNumber" placeholder="Enter registration number" value="{{ regno }}" readonly>
+                    </div>
+
+                    <!-- Full Name -->
+                    <div class="form-group">
+                        {{ form.fullName.label(class="form-label") }}
+                        {{ form.fullName(class="form-control") }}
+                    </div>
+
+                    <!-- Gender -->
+                    <div class="form-group">
+                        {{ form.gender.label(class="form-label") }}
+                        {{ form.gender(class="form-control") }}
+                    </div>
+
+                    <!-- Date of Birth -->
+                    <div class="form-group">
+                        {{ form.dob.label(class="form-label") }}
+                        {{ form.dob(class="form-control") }}
+                    </div>
+
+                    <!-- Age -->
+                    <div class="form-group">
+                        {{ form.age.label(class="form-label") }}
+                        {{ form.age(class="form-control") }}
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="form-group">
+                        {{ form.phone.label(class="form-label") }}
+                        {{ form.phone(class="form-control") }}
+                    </div>
+
+                    <!-- Email -->
+                    <div class="form-group">
+                        {{ form.email.label(class="form-label") }}
+                        {{ form.email(class="form-control") }}
+                    </div>
+
+                    <!-- Class Name -->
+                    <div class="form-group">
+                        {{ form.class_name.label(class="form-label") }}
+                        {{ form.class_name(class="form-control") }}
+                    </div>
+
+                    <!-- Address -->
+                    <div class="form-group">
+                        {{ form.address.label(class="form-label") }}
+                        {{ form.address(class="form-control") }}
+                    </div>
+
+                    {{ form.submit(class="btn btn-primary") }}
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

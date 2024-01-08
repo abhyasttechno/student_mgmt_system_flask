@@ -1,0 +1,73 @@
+{% extends 'login_base.html' %}
+
+{% block content %}
+
+				
+
+	<form class="login100-form validate-form" method="POST" action="/password_upd">
+
+		<span class="login100-form-title p-b-45">
+			{{ form.hidden_tag() }}
+		
+			<center>
+				{% for message in get_flashed_messages() %} 
+				<div class="alert alert-success alert-dismissible fade show" role="alert">
+					{{ message }}
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				{% endfor %}
+			</center>
+		</span>
+
+
+		<span class="login100-form-title p-b-43">
+			School Management System
+		</span>
+		
+		
+		<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+
+			
+			{{ form.email(class="input100", required=True) }}
+			
+			<span class="focus-input100"></span>
+		
+			{{ form.email.label(class="label-input100") }}
+		</div>
+
+		
+		
+		<div class="wrap-input100 validate-input" data-validate="Password is required">
+			{{ form.password(class="input100", required=True) }}
+			
+			<span class="focus-input100"></span>
+		
+			{{ form.password.label(class="label-input100") }}
+		</div>
+		<div class="wrap-input100 validate-input" data-validate="Confirm Password is required">
+			{{ form.conf_pass(class="input100", required=True) }}
+			
+			<span class="focus-input100"></span>
+		
+			{{ form.conf_pass.label(class="label-input100") }}
+		</div>
+	
+	
+
+
+		<div class="container-login100-form-btn">
+		
+				{{ form.submit(class="login100-form-btn") }}
+		
+
+		</div>
+	
+		<div class="center">
+			<a href="/">
+				Login
+			</a>
+		</div>
+	</form>
+{% endblock %}
